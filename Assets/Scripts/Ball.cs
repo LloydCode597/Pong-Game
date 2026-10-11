@@ -18,13 +18,18 @@ public class Ball : MonoBehaviour
         rb.linearVelocity = new Vector2(xDir, yDir).normalized * speed;
     }
 
+    public ScoreManager scoreManager;
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("ScoreLeft") || other.CompareTag("ScoreRight"))
-        {
-            // TODO: call your ScoreManager here
-            transform.position = Vector3.zero;
-            Launch();
-        }
+        if (other.CompareTag("ScoreLeft"))
+            scoreManager.AIScored();      // ball got past the player
+        else if (other.CompareTag("ScoreRight"))
+            scoreManager.PlayerScored();  // ball got past the AI
+        else
+            return;
+
+        transform.position = Vector3.zero;
+        Launch();
     }
 }

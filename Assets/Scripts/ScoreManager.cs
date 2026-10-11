@@ -1,16 +1,34 @@
 using UnityEngine;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public TextMeshProUGUI leftText;
+    public TextMeshProUGUI rightText;
+
+    int leftScore;
+    int rightScore;
+
     void Start()
     {
-        
+        UpdateUI();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayerScored()
     {
-        
+        leftScore++;
+        UpdateUI();
+    }
+
+    public void AIScored()
+    {
+        rightScore++;
+        UpdateUI();
+    }
+
+    void UpdateUI()
+    {
+        leftText.text = leftScore.ToString();
+        rightText.text = rightScore.ToString();
     }
 }
