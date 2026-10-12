@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ScoreLeft
   - ScoreRight
+  - Paddle
   layers:
   - Default
   - TransparentFX
