@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    int rallyHits;
+
     [Header("Speed")]
     public float baseSpeed = 8f;
     public float speedIncrease = 0.5f;   // added per paddle hit
@@ -47,6 +49,9 @@ public class Ball : MonoBehaviour
 
         currentSpeed = Mathf.Min(currentSpeed + speedIncrease, maxSpeed);
         rb.linearVelocity = dir * currentSpeed;
+
+        rallyHits++;
+        Debug.Log($"Hit {rallyHits} | speed {currentSpeed:F1}");
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -59,6 +64,7 @@ public class Ball : MonoBehaviour
             return;
 
         transform.position = Vector3.zero;
+        rallyHits = 0; // reset rally hits
         Launch(); // also resets currentSpeed
     }
 }
