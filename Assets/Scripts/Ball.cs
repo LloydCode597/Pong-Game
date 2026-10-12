@@ -3,6 +3,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     int rallyHits;
+    SpriteRenderer sr;
 
     [Header("Speed")]
     public float baseSpeed = 8f;
@@ -20,6 +21,7 @@ public class Ball : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
         Launch();
     }
 
@@ -50,8 +52,11 @@ public class Ball : MonoBehaviour
         currentSpeed = Mathf.Min(currentSpeed + speedIncrease, maxSpeed);
         rb.linearVelocity = dir * currentSpeed;
 
+        float t = (currentSpeed - baseSpeed) / (maxSpeed - baseSpeed);
+        sr.color = Color.Lerp(Color.white, Color.red, t);
+
         rallyHits++;
-        Debug.Log($"Hit {rallyHits} | speed {currentSpeed:F1}");
+        // Debug.Log($"Hit {rallyHits} | speed {currentSpeed:F1}");
     }
 
     void OnTriggerEnter2D(Collider2D other)
