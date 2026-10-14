@@ -69,7 +69,13 @@ public class Ball : MonoBehaviour
             return;
 
         transform.position = Vector3.zero;
-        rallyHits = 0; // reset rally hits
-        Launch(); // also resets currentSpeed
+
+        if (scoreManager.GameOver)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        Launch();
     }
 }
