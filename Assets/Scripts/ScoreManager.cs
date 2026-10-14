@@ -55,9 +55,9 @@ public class ScoreManager : MonoBehaviour
 
     void CheckWin()
     {
-        if (leftScore >= winningScore)
+        if (rightScore >= winningScore)
             EndGame("YOU WIN");
-        else if (rightScore >= winningScore)
+        else if (leftScore >= winningScore)
             EndGame("YOU LOSE");
     }
 
