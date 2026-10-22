@@ -7,6 +7,7 @@ TagManager:
   - ScoreLeft
   - ScoreRight
   - Paddle
+  - Wall
   layers:
   - Default
   - TransparentFX
