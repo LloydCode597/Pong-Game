@@ -1460,6 +1460,9 @@ MonoBehaviour:
   paddleHitClip: {fileID: 8300000, guid: 1aed66251ae9aed469c90ea9765e59bb, type: 3}
   wallHitClip: {fileID: 8300000, guid: cd5f94bd66477224eb73687bced4e434, type: 3}
   scoreClip: {fileID: 8300000, guid: d44237fa0db722142bad11a4ce8f60be, type: 3}
+  paddleVolume: 0.6
+  wallVolume: 0.5
+  scoreVolume: 0.293
 --- !u!96 &1433746148
 TrailRenderer:
   serializedVersion: 4

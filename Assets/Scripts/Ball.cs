@@ -13,10 +13,15 @@ public class Ball : MonoBehaviour
     [Header("References")]
     public ScoreManager scoreManager;
 
-    [Header("Audio")]
+    [Header("Audio Clips")]
     public AudioClip paddleHitClip;
     public AudioClip wallHitClip;
     public AudioClip scoreClip;
+
+    [Header("Volumes")]
+    [Range(0f, 1f)] public float paddleVolume = 0.6f;
+    [Range(0f, 1f)] public float wallVolume = 0.5f;
+    [Range(0f, 1f)] public float scoreVolume = 0.4f;
 
     Rigidbody2D rb;
     SpriteRenderer sr;
@@ -47,7 +52,7 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            PlaySound(wallHitClip, Random.Range(0.95f, 1.05f));
+            PlaySound(wallHitClip, wallVolume, Random.Range(0.95f, 1.05f));
             return;
         }
 
@@ -68,7 +73,7 @@ public class Ball : MonoBehaviour
         float t = (currentSpeed - baseSpeed) / (maxSpeed - baseSpeed);
         sr.color = Color.Lerp(Color.white, Color.red, t);
 
-        PlaySound(paddleHitClip, Mathf.Lerp(1f, 1.3f, t));
+        PlaySound(paddleHitClip, paddleVolume, Mathf.Lerp(1f, 1.3f, t));
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -76,12 +81,12 @@ public class Ball : MonoBehaviour
         if (other.CompareTag("ScoreLeft"))
         {
             scoreManager.AIScored();
-            PlaySound(scoreClip, 0.85f);   // lower = bad news
+            PlaySound(scoreClip, scoreVolume, 0.85f);   // lower = bad news
         }
         else if (other.CompareTag("ScoreRight"))
         {
             scoreManager.PlayerScored();
-            PlaySound(scoreClip, 1.15f);   // higher = good news
+            PlaySound(scoreClip, scoreVolume, 1.15f);   // higher = good news
         }
         else
             return;
@@ -97,10 +102,10 @@ public class Ball : MonoBehaviour
         Launch();
     }
 
-    void PlaySound(AudioClip clip, float pitch = 1f)
+    void PlaySound(AudioClip clip, float volume, float pitch = 1f)
     {
         if (clip == null) return;
         audioSource.pitch = pitch;
-        audioSource.PlayOneShot(clip);
+        audioSource.PlayOneShot(clip, volume);
     }
 }
