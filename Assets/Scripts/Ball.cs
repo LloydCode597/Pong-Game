@@ -16,12 +16,12 @@ public class Ball : MonoBehaviour
     [Header("Audio Clips")]
     public AudioClip paddleHitClip;
     public AudioClip wallHitClip;
-    public AudioClip scoreClip;
+
 
     [Header("Volumes")]
     [Range(0f, 1f)] public float paddleVolume = 0.6f;
     [Range(0f, 1f)] public float wallVolume = 0.5f;
-    [Range(0f, 1f)] public float scoreVolume = 0.4f;
+
 
     Rigidbody2D rb;
     SpriteRenderer sr;
@@ -79,15 +79,9 @@ public class Ball : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("ScoreLeft"))
-        {
             scoreManager.AIScored();
-            PlaySound(scoreClip, scoreVolume, 0.85f);   // lower = bad news
-        }
         else if (other.CompareTag("ScoreRight"))
-        {
             scoreManager.PlayerScored();
-            PlaySound(scoreClip, scoreVolume, 1.15f);   // higher = good news
-        }
         else
             return;
 
