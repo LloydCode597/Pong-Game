@@ -113,10 +113,10 @@ public class Ball : MonoBehaviour
     {
         if (serving) return;
 
-        if (other.CompareTag("ScoreLeft"))
-            scoreManager.AIScored();
-        else if (other.CompareTag("ScoreRight"))
+        if (other.CompareTag("ScoreLeft"))        // ball got past the AI
             scoreManager.PlayerScored();
+        else if (other.CompareTag("ScoreRight"))  // ball got past the player
+            scoreManager.AIScored();
         else
             return;
 

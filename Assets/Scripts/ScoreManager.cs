@@ -5,13 +5,13 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    public TextMeshProUGUI leftText;
-    public TextMeshProUGUI rightText;
+    public TextMeshProUGUI leftText;    // shows the AI's score (left side)
+    public TextMeshProUGUI rightText;   // shows the player's score (right side)
     public TextMeshProUGUI winText;
-    public int winningScore = 7;
+    public int winningScore = 5;
 
-    int leftScore;
-    int rightScore;
+    int playerScore;
+    int aiScore;
     PongControls controls;
 
     public bool GameOver { get; private set; }
@@ -41,23 +41,23 @@ public class ScoreManager : MonoBehaviour
 
     public void PlayerScored()
     {
-        leftScore++;
+        playerScore++;
         UpdateUI();
         CheckWin();
     }
 
     public void AIScored()
     {
-        rightScore++;
+        aiScore++;
         UpdateUI();
         CheckWin();
     }
 
     void CheckWin()
     {
-        if (rightScore >= winningScore)
+        if (playerScore >= winningScore)
             EndGame("YOU WIN");
-        else if (leftScore >= winningScore)
+        else if (aiScore >= winningScore)
             EndGame("YOU LOSE");
     }
 
@@ -76,7 +76,7 @@ public class ScoreManager : MonoBehaviour
 
     void UpdateUI()
     {
-        leftText.text = leftScore.ToString();
-        rightText.text = rightScore.ToString();
+        leftText.text = aiScore.ToString();
+        rightText.text = playerScore.ToString();
     }
 }
