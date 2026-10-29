@@ -1,10 +1,11 @@
+
 # Pong
 
 A classic 2D Pong game built in Unity. You take on an AI opponent in a fast-paced match where the ball speeds up with every paddle hit and the angle of each return depends on where the ball strikes your paddle.
 
 **[▶ Play it on itch.io]([ITCH_IO_URL])**
 
-![Gameplay screenshot](docs/screenshot.png)
+<img width="1558" height="880" alt="Pong Game Screenshot " src="https://github.com/user-attachments/assets/ba8f95d3-54d7-47bc-94f6-63e0e0a82ff5" />
 
 ## How to Play
 
@@ -40,7 +41,7 @@ The first player to reach the winning score takes the match. When it ends, press
    ```
    git clone https://github.com/LloydCode597/Pong-Game.git
    ```
-3. Open the folder in Unity Hub (Unity version: `[UNITY_VERSION]`).
+3. Open the folder in Unity Hub (Unity version: `[6.5 (6000.5.8f1)]`).
 4. Open `Assets/Scenes/Game` and press Play.
 
 ## Credits
