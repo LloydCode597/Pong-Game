@@ -3,7 +3,7 @@
 
 A classic 2D Pong game built in Unity. You take on an AI opponent in a fast-paced match where the ball speeds up with every paddle hit and the angle of each return depends on where the ball strikes your paddle.
 
-**[▶ Play it on itch.io]([ITCH_IO_URL])**
+**[▶ Play it on itch.io]([https://madallen.itch.io/pong-game])**
 
 <img width="1558" height="880" alt="Pong Game Screenshot " src="https://github.com/user-attachments/assets/ba8f95d3-54d7-47bc-94f6-63e0e0a82ff5" />
 
